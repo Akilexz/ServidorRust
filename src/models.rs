@@ -5,15 +5,14 @@ use diesel::pg::PgConnection;
 use crate::schema::homeworks;
 use crate::schema::homeworks::dsl::homeworks as all_homeworks;
 
-#[derive(Queryable)]
-// #[table_name = "homeworks"]
+#[derive(Serialize, Queryable, Debug, Clone)]
 pub struct Homework {
     pub id: i32,
     pub title: String,
     pub published: bool,
 }
 
-#[derive(Insertable)]
+#[derive(Serialize, Deserialize, Insertable)]
 #[table_name = "homeworks"]
 pub struct NewHomework {
     pub title: String,
