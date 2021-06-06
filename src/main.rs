@@ -5,9 +5,9 @@
 extern crate diesel;
 extern crate dotenv;
 extern crate r2d2;
-extern crate r2d2_diesel;
+extern crate r2d2_diesel;   //sirve para mandar un set de la base de datos y inicializar
 #[macro_use]
-extern crate rocket;
+extern crate rocket;    // sirve para mutar el tipo de peticiones que decee
 extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;

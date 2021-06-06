@@ -1,4 +1,4 @@
-use diesel::pg::PgConnection;
+use diesel::pg::PgConnection; //Diesel sirve para conectarce a la base se datos y en esto hacer migraciones
 use r2d2;
 use r2d2_diesel::ConnectionManager;
 use rocket::http::Status;

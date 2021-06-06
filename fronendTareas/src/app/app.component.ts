@@ -11,9 +11,13 @@ import { Homework } from 'src/modulos/homework';
 export class AppComponent implements OnInit{
   title = 'fronendTareas';
 
+  // Variable para guardar los datos de la peticion get
   responseHomeworks: any[];
+  // lo vamos a utilizar para el cuerpo de la peticion tanto como post y put
   data: any;
+  // Modelo de la tabla tarea
   homeworks: Homework;
+  // lo vamos a utilizar para recuperar cuantas tareas estan activas
   statusNumber: any;
   constructor(private http: HttpClient){}
 
@@ -26,6 +30,7 @@ export class AppComponent implements OnInit{
     this.getAllHomeworks();
   }
 
+  // funcion para traer todas las tareas
   getAllHomeworks = () => {
     this.http.get<any>(environment.Api_url + 'homeworks').subscribe(data => {
       this.responseHomeworks = data.data;
@@ -45,6 +50,8 @@ export class AppComponent implements OnInit{
 
     })
   }
+
+  // funcion para guardar una nueva tarea
   postSaveHomework = () => {
     this.data = {
         title: this.homeworks.title,
@@ -56,6 +63,7 @@ export class AppComponent implements OnInit{
     });
   }
 
+  // Funcion para eliminar una tarea
   deleteHomework = (id: number) => {
     console.log(id);
     if (id !== undefined){
@@ -68,6 +76,7 @@ export class AppComponent implements OnInit{
     }
   }
 
+  // Funcion para editar el estado del campo seleccionado
   editStatus = (id:number, title:any) => {
     console.log(id);
     if(id !== undefined) {
@@ -84,6 +93,7 @@ export class AppComponent implements OnInit{
     }
   }
 
+  // Funcion para editar el texto del campo seleccionado
   editHomework = (id:number,title:any, published:boolean) => {
     if(id !== undefined) {
       this.data = {
